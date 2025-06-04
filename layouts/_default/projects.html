@@ -1,0 +1,681 @@
+{{ define "head" }}
+<meta name="description" content="{{ .Params.description }}">
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/projects.css">
+<!-- fontawesome -->
+<script defer src="{{.Site.Params.staticPath}}/fontawesome-6/all-6.4.2.js"></script>
+<style>
+/* Custom styles for projects page */
+.projects-page-card {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 400px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+.projects-page-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+.projects-page-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.projects-page-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+.projects-page-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Enhanced page load animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Title animation */
+#projects h3 {
+    opacity: 0;
+    animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+/* Navigation animation */
+.projects-navigation {
+    opacity: 0;
+    animation: slideInFromLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.7s forwards;
+}
+
+/* Page transition */
+.projects-page {
+    opacity: 0;
+    animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+}
+
+/* Smooth page transition effect */
+body {
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced button animations */
+.nav-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+.projects-page-card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+    background: #ffffff;
+}
+.projects-page-card .card-head {
+    overflow: hidden;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+    padding: 0;
+}
+.projects-page-card .card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.projects-page-card .card-text {
+    font-size: 0.9rem;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.projects-page-card .badge {
+    font-size: 0.7rem;
+    margin: 2px;
+}
+.projects-page-card .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+.projects-page-card .btn-primary {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+.projects-page-card .btn-primary:hover {
+    background-color: #0056b3 !important;
+    border-color: #0056b3 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+.projects-page-card .btn-primary:focus,
+.projects-page-card .btn-primary:active {
+    background-color: #0056b3 !important;
+    border-color: #0056b3 !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+.projects-page-card .card-footer a:not(.btn) {
+    color: #007bff !important;
+    text-decoration: none;
+}
+.projects-page-card .card-footer a:not(.btn):hover {
+    color: #0056b3 !important;
+}
+.projects-page-card .card-footer i {
+    color: #007bff !important;
+    font-size: 1.2rem;
+}
+.projects-page-card .card-footer i:hover {
+    color: #0056b3 !important;
+}
+
+/* Custom grid override for projects page only */
+#projects .projects-col {
+    flex: 0 0 auto;
+    width: 32% !important;
+    margin-right: 2%;
+}
+#projects .projects-col:nth-child(3n) {
+    margin-right: 0;
+}
+
+/* Projects page container */
+.projects-page {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    #projects .projects-col {
+        width: 48% !important;
+        margin-right: 4%;
+    }
+    #projects .projects-col:nth-child(2n) {
+        margin-right: 0;
+    }
+    #projects .projects-col:nth-child(3n) {
+        margin-right: 4%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #projects .projects-col {
+        width: 100% !important;
+        margin-right: 0;
+    }
+}
+.projects-page-card .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+.projects-page-card .btn-primary {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+.projects-page-card .btn-primary:hover {
+    background-color: #0056b3 !important;
+    border-color: #0056b3 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+.projects-page-card .btn-primary:focus,
+.projects-page-card .btn-primary:active {
+    background-color: #0056b3 !important;
+    border-color: #0056b3 !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+.projects-page-card .card-footer a:not(.btn) {
+    color: #007bff !important;
+    text-decoration: none;
+}
+.projects-page-card .card-footer a:not(.btn):hover {
+    color: #0056b3 !important;
+}
+.projects-page-card .card-footer i {
+    color: #007bff !important;
+    font-size: 1.2rem;
+}
+.projects-page-card .card-footer i:hover {
+    color: #0056b3 !important;
+}
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+.scroll-to-top:hover {
+    background: #0056b3;
+}
+
+/* Project navigation styles */
+.projects-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 15px;
+}
+.nav-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+.nav-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+.nav-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+.page-indicator {
+    background: #f8f9fa;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+/* Reduce section spacing */
+#projects {
+    padding: 30px 0 !important;
+}
+#projects .container {
+    margin-bottom: 15px;
+}
+.projects-page-card {
+    margin-bottom: 15px;
+}
+</style>
+{{ end }}
+
+{{ define "title" }}
+{{.Title }} | {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+<section id="projects" class="py-4">
+    <div class="container">
+        <h3 class="text-center mb-4">{{ .Title }}</h3>
+        
+        <!-- Projects Container -->
+        <div id="projectsContainer" class="row justify-content-center px-3">
+            
+            <!-- Page 1 Projects -->
+            <div class="projects-page" id="page1">
+                <!-- SkillBridge Project -->
+                <div class="projects-col my-2">
+                    <div class="card projects-page-card">
+                        <div class="card-head">
+                            <img class="card-img-top" src="/images/skillbridge.png" alt="SkillBridge">
+                        </div>
+                        <div class="card-body bg-transparent">
+                            <div class="pb-2 bg-transparent">
+                                <span class="badge badge-secondary">React.js</span>
+                                <span class="badge badge-secondary">Node.js</span>
+                                <span class="badge badge-secondary">Gemma 2</span>
+                            </div>
+                            <h5 class="card-title bg-transparent">SkillBridge – AI Career Assistant</h5>
+                            <div class="card-text bg-transparent secondary-font">
+                                Developed an AI-powered platform offering mock interviews, resume analysis, and personalized career guidance using Gemma 2 models.
+                            </div>
+                        </div>
+                        <div class="card-footer py-2">
+                            <span class="m-1">
+                                <a href="https://github.com/Sarahkh4/Gemma2-ai-challenge-" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </span>
+                            <span class="float-end">
+                                <a class="btn btn-sm btn-primary" href="https://rococo-crepe-f85566.netlify.app/" target="_blank">
+                                    Live Demo
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compass AI Project -->
+                <div class="projects-col my-2">
+                    <div class="card projects-page-card">
+                        <div class="card-head">
+                            <img class="card-img-top" src="/images/compass.png" alt="Compass AI">
+                        </div>
+                        <div class="card-body bg-transparent">
+                            <div class="pb-2 bg-transparent">
+                                <span class="badge badge-secondary">Python</span>
+                                <span class="badge badge-secondary">LangChain</span>
+                                <span class="badge badge-secondary">OpenAI API</span>
+                            </div>
+                            <h5 class="card-title bg-transparent">Compass AI – Marketing Assistant</h5>
+                            <div class="card-text bg-transparent secondary-font">
+                                Built an AI-powered tool that creates tailored marketing campaigns, analyzes audience data, and automates social media content using LLMs.
+                            </div>
+                        </div>
+                        <div class="card-footer py-2">
+                            <span class="m-1">
+                                <a href="https://github.com/muhammad-farhan67/CompassAI" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </span>
+                            <span class="float-end">
+                                <a class="btn btn-sm btn-primary" href="https://compassai.streamlit.app/" target="_blank">
+                                    Live Demo
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Echo AI Project -->
+                <div class="projects-col my-2">
+                    <div class="card projects-page-card">
+                        <div class="card-head">
+                            <img class="card-img-top" src="/images/echoai.png" alt="Echo AI">
+                        </div>
+                        <div class="card-body bg-transparent">
+                            <div class="pb-2 bg-transparent">
+                                <span class="badge badge-secondary">Python</span>
+                                <span class="badge badge-secondary">LangChain</span>
+                                <span class="badge badge-secondary">Speech Recognition</span>
+                            </div>
+                            <h5 class="card-title bg-transparent">Echo AI – Voice Companion</h5>
+                            <div class="card-text bg-transparent secondary-font">
+                                Developed a voice-enabled assistant that answers queries, sets reminders, and interacts conversationally using AI-powered speech-to-text and LLM integration.
+                            </div>
+                        </div>
+                        <div class="card-footer py-2">
+                            <span class="m-1">
+                                <a href="https://github.com/ahadarshad2001/EchoAi" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </span>
+                            <span class="float-end">
+                                <a class="btn btn-sm btn-primary" href="https://echoaichatbot.streamlit.app/" target="_blank">
+                                    Live Demo
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 2 Projects -->
+            <div class="projects-page" id="page2" style="display: none;">
+                <!-- DataViz Pro -->
+                <div class="projects-col my-2">
+                    <div class="card projects-page-card">
+                        <div class="card-head">
+                            <img class="card-img-top" src="/images/portfolio.jpg" alt="DataViz Pro">
+                        </div>
+                        <div class="card-body bg-transparent">
+                            <div class="pb-2 bg-transparent">
+                                <span class="badge badge-secondary">Python</span>
+                                <span class="badge badge-secondary">Matplotlib</span>
+                                <span class="badge badge-secondary">Pandas</span>
+                            </div>
+                            <h5 class="card-title bg-transparent">DataViz Pro – Analytics Dashboard</h5>
+                            <div class="card-text bg-transparent secondary-font">
+                                A comprehensive data visualization platform that transforms complex datasets into interactive charts and insights for business intelligence.
+                            </div>
+                        </div>
+                        <div class="card-footer py-2">
+                            <span class="m-1">
+                                <a href="#" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </span>
+                            <span class="float-end">
+                                <a class="btn btn-sm btn-primary" href="#" target="_blank">
+                                    Live Demo
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SmartLearn AI -->
+                <div class="projects-col my-2">
+                    <div class="card projects-page-card">
+                        <div class="card-head">
+                            <img class="card-img-top" src="/images/portfolio.jpg" alt="SmartLearn AI">
+                        </div>
+                        <div class="card-body bg-transparent">
+                            <div class="pb-2 bg-transparent">
+                                <span class="badge badge-secondary">TensorFlow</span>
+                                <span class="badge badge-secondary">React</span>
+                                <span class="badge badge-secondary">FastAPI</span>
+                            </div>
+                            <h5 class="card-title bg-transparent">SmartLearn AI – Education Platform</h5>
+                            <div class="card-text bg-transparent secondary-font">
+                                An AI-powered educational platform that personalizes learning experiences using machine learning algorithms to adapt to student needs.
+                            </div>
+                        </div>
+                        <div class="card-footer py-2">
+                            <span class="m-1">
+                                <a href="#" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </span>
+                            <span class="float-end">
+                                <a class="btn btn-sm btn-primary" href="#" target="_blank">
+                                    Live Demo
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TaskFlow Manager -->
+                <div class="projects-col my-2">
+                    <div class="card projects-page-card">
+                        <div class="card-head">
+                            <img class="card-img-top" src="/images/portfolio.jpg" alt="TaskFlow Manager">
+                        </div>
+                        <div class="card-body bg-transparent">
+                            <div class="pb-2 bg-transparent">
+                                <span class="badge badge-secondary">Vue.js</span>
+                                <span class="badge badge-secondary">Node.js</span>
+                                <span class="badge badge-secondary">MongoDB</span>
+                            </div>
+                            <h5 class="card-title bg-transparent">TaskFlow Manager – Project Tool</h5>
+                            <div class="card-text bg-transparent secondary-font">
+                                A comprehensive project management tool with AI-powered task prioritization and team collaboration features for enhanced productivity.
+                            </div>
+                        </div>
+                        <div class="card-footer py-2">
+                            <span class="m-1">
+                                <a href="#" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </span>
+                            <span class="float-end">
+                                <a class="btn btn-sm btn-primary" href="#" target="_blank">
+                                    Live Demo
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="projects-navigation">
+            <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <div class="page-indicator">
+                <span id="currentPage">1</span> of <span id="totalPages">2</span>
+            </div>
+            <button class="nav-btn" id="nextBtn" onclick="changePage(1)">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+              
+
+<!-- Scroll to top button -->
+<button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+// Page loading animation
+document.addEventListener('DOMContentLoaded', function() {
+    // Add fade-in effect to the entire page
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease-in-out';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+    
+    // Stagger animation for project cards
+    const cards = document.querySelectorAll('.projects-page-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 200 + (index * 100));
+    });
+    
+    // Animate title
+    const title = document.querySelector('#projects h3');
+    if (title) {
+        title.style.opacity = '0';
+        title.style.transform = 'translateY(-20px)';
+        title.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        
+        setTimeout(() => {
+            title.style.opacity = '1';
+            title.style.transform = 'translateY(0)';
+        }, 300);
+    }
+    
+    // Animate navigation
+    const navigation = document.querySelector('.projects-navigation');
+    if (navigation) {
+        navigation.style.opacity = '0';
+        navigation.style.transform = 'translateY(20px)';
+        navigation.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        setTimeout(() => {
+            navigation.style.opacity = '1';
+            navigation.style.transform = 'translateY(0)';
+        }, 600);
+    }
+});
+
+// Projects pagination functionality
+let currentPageNum = 1;
+const totalPagesNum = 2;
+
+function changePage(direction) {
+    const currentPageEl = document.getElementById(`page${currentPageNum}`);
+    currentPageEl.style.opacity = '0';
+    currentPageEl.style.transform = 'translateX(' + (direction > 0 ? '-20px' : '20px') + ')';
+    
+    setTimeout(() => {
+        currentPageEl.style.display = 'none';
+        currentPageNum += direction;
+        
+        // Ensure page number stays within bounds
+        if (currentPageNum < 1) currentPageNum = 1;
+        if (currentPageNum > totalPagesNum) currentPageNum = totalPagesNum;
+        
+        const newPageEl = document.getElementById(`page${currentPageNum}`);
+        newPageEl.style.display = 'flex';
+        newPageEl.style.opacity = '0';
+        newPageEl.style.transform = 'translateX(' + (direction > 0 ? '20px' : '-20px') + ')';
+        
+        setTimeout(() => {
+            newPageEl.style.opacity = '1';
+            newPageEl.style.transform = 'translateX(0)';
+            
+            // Re-animate cards on new page
+            const newCards = newPageEl.querySelectorAll('.projects-page-card');
+            newCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }, 50);
+        
+        // Update UI
+        document.getElementById('currentPage').textContent = currentPageNum;
+        document.getElementById('prevBtn').disabled = currentPageNum === 1;
+        document.getElementById('nextBtn').disabled = currentPageNum === totalPagesNum;
+    }, 200);
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('prevBtn').disabled = true;
+    document.getElementById('currentPage').textContent = currentPageNum;
+    document.getElementById('totalPages').textContent = totalPagesNum;
+    
+    // Set up initial page styles
+    const pages = document.querySelectorAll('.projects-page');
+    pages.forEach(page => {
+        page.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    });
+});
+
+// Scroll to top functionality
+window.onscroll = function() {
+    var scrollToTopBtn = document.getElementById("scrollToTop");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+};
+
+function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+// Smooth scrolling for anchor links
+document.addEventListener('DOMContentLoaded', function() {
+    // Add smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+});
+</script>
+{{ end }}
