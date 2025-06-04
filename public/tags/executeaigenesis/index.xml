@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ExecuteAIGenesis on Abdullah Siddique</title>
-    <link>http://localhost:1313/tags/executeaigenesis/</link>
+    <link>//localhost:1313/tags/executeaigenesis/</link>
     <description>Recent content in ExecuteAIGenesis on Abdullah Siddique</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 08 May 2025 10:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/executeaigenesis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/executeaigenesis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building a Startup Copilot: AI Genesis Hackathon Journey</title>
-      <link>http://localhost:1313/blogs/startup-copilot-hackathon/</link>
+      <link>//localhost:1313/blogs/startup-copilot-hackathon/</link>
       <pubDate>Thu, 08 May 2025 10:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/startup-copilot-hackathon/</guid>
+      <guid>//localhost:1313/blogs/startup-copilot-hackathon/</guid>
       <description>&lt;p&gt;🚀 &lt;strong&gt;We built a Startup Copilot during the lablab.ai Execute: AI Genesis Hackathon!&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Over an intense and inspiring weekend, our team developed an AI-powered &lt;strong&gt;Startup Copilot&lt;/strong&gt;, a tool designed to support aspiring founders from idea to impact.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-our-startup-copilot-can-do&#34;&gt;What Our Startup Copilot Can Do&lt;/h2&gt;&#xA;&lt;p&gt;🔍 &lt;strong&gt;Here&amp;rsquo;s what our Startup Copilot can do:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;💡 &lt;strong&gt;Validate your startup idea&lt;/strong&gt; by analyzing current and future industry trends&lt;/p&gt;&#xA;&lt;p&gt;📈 &lt;strong&gt;Generate an AI-assisted pitch deck&lt;/strong&gt; tailored to your business concept&lt;/p&gt;</description>
     </item>
   </channel>
