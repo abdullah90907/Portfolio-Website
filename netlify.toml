@@ -1,0 +1,27 @@
+[build]
+  publish = "public"  # The directory Hugo outputs the built site to
+  command = "hugo --gc --minify"  # Build command with garbage collection and minification
+
+[build.environment]
+  HUGO_VERSION = "0.147.7"  # Specify the Hugo version to ensure Netlify installs it
+  NODE_VERSION = "18"  # Optional: Specify Node.js version if needed for other dependencies
+
+[context.production.environment]
+  HUGO_VERSION = "0.147.7"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+  NODE_VERSION = "18"
+
+[context.deploy-preview]
+  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+
+[context.deploy-preview.environment]
+  HUGO_VERSION = "0.147.7"
+  NODE_VERSION = "18"
+
+[context.branch-deploy]
+  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+  HUGO_VERSION = "0.147.7"
+  NODE_VERSION = "18"
