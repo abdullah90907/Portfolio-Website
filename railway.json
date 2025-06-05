@@ -1,5 +1,0 @@
-{
-  "buildCommand": "cd exampleSite && hugo --gc --minify --themesDir ../themes",
-  "startCommand": "",
-  "outputDirectory": "exampleSite/public"
-}
