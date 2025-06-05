@@ -301,7 +301,7 @@ params:
         image: /images/CS50x Puzzle Day 2025.png
       - title: Facebook Meta Hacker Cup
         content: Solved challenging algorithm problems in a global coding competition.
-        image: /images/meta certificate.png
+        image: /images/meta certificate.jpeg
       - title: CALICO Fall '24 – UC Berkeley
         content: Solved 5 out of 8 algorithmic challenges in UC Berkeley's CALICO programming competition.
         url: https://calico.cs.berkeley.edu/
