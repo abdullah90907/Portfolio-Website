@@ -199,6 +199,207 @@ header .navbar.animate {
     color: var(--text-secondary-color) !important;
 }
 
+/* Animated Image Container */
+#about .animated-image-container {
+    position: relative;
+    display: inline-block;
+    padding: 40px;
+    margin-right: 2rem;
+}
+
+/* Profile Image Styling */
+#about .profile-image {
+    position: relative;
+    z-index: 10;
+    box-shadow: 0px 8px 56px rgba(15, 80, 100, 0.16);
+    transition: all 0.3s ease;
+    padding: 0;
+    border: 0;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50% !important;
+    aspect-ratio: 1 / 1;
+}
+
+#about .profile-image:hover {
+    box-shadow: 0 0 30px rgba(15, 80, 100, 0.3);
+    transform: scale(1.05);
+}
+
+/* Additional styling to ensure perfect circular image */
+#about .profile-image.img-thumbnail {
+    border-radius: 50% !important;
+    padding: 0 !important;
+    border: none !important;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+}
+
+#about .profile-image.rounded-circle {
+    border-radius: 50% !important;
+}
+
+/* Ensure container doesn't interfere with image shape */
+#about .animated-image-container .img-thumbnail {
+    max-width: none;
+    width: 250px;
+    height: 250px;
+}
+
+/* Animated Circles */
+.circle-animation {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+}
+
+.circle-1 {
+    width: 280px;
+    height: 280px;
+    border-color: var(--primary-color, #4a90e2);
+    animation: pulse-circle 3s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    width: 320px;
+    height: 320px;
+    border-color: rgba(var(--primary-color-rgb, 74, 144, 226), 0.6);
+    animation: rotate-circle 4s linear infinite;
+    animation-delay: 0.5s;
+    border-style: dashed;
+}
+
+.circle-3 {
+    width: 360px;
+    height: 360px;
+    border-color: rgba(var(--primary-color-rgb, 74, 144, 226), 0.4);
+    animation: pulse-circle 5s ease-in-out infinite reverse;
+    animation-delay: 1s;
+    border-width: 1px;
+}
+
+/* Keyframe Animations */
+@keyframes pulse-circle {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.3;
+    }
+}
+
+@keyframes rotate-circle {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Floating dots animation */
+#about .animated-image-container::before,
+#about .animated-image-container::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color, #4a90e2);
+    border-radius: 50%;
+    animation: float-dots 6s ease-in-out infinite;
+}
+
+#about .animated-image-container::before {
+    top: 20%;
+    right: 15%;
+    animation-delay: 0s;
+}
+
+#about .animated-image-container::after {
+    bottom: 25%;
+    left: 10%;
+    animation-delay: 3s;
+}
+
+@keyframes float-dots {
+    0%, 100% {
+        transform: translateY(0px);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-20px);
+        opacity: 1;
+    }
+}
+
+/* Original image styles for compatibility */
+#about .image img:not(.profile-image) {
+    box-shadow: 0px 8px 56px rgba(15, 80, 100, 0.16);
+    transition: box-shadow 0.3s;
+    padding: 0;
+    border: 0;
+}
+
+#about .image img:not(.profile-image):hover {
+    box-shadow: 0 0 11px rgb(15 80 100 / 20%);
+}
+
+/* About section layout improvements */
+#about .image {
+    justify-content: center !important;
+    padding-right: 2rem !important;
+}
+
+#about .content {
+    padding-left: 1.5rem;
+}
+
+/* Responsive spacing adjustments */
+@media (max-width: 991px) {
+    #about .image {
+        padding-right: 1rem !important;
+        margin-bottom: 2rem;
+    }
+    
+    #about .content {
+        padding-left: 0;
+        text-align: center;
+    }
+    
+    #about .animated-image-container {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #about .animated-image-container {
+        margin-right: 0;
+        padding: 20px;
+    }
+    
+    #about .content {
+        padding-left: 0;
+    }
+}
+
+/* Enhanced animation for better performance */
+@media (prefers-reduced-motion: reduce) {
+    .circle-animation,
+    #about .animated-image-container::before,
+    #about .animated-image-container::after {
+        animation: none;
+    }
+}
+
 #about .image img {
     box-shadow: 0px 8px 56px rgba(15, 80, 100, 0.16);
     transition: box-shadow 0.3s;
@@ -237,6 +438,7 @@ header .navbar.animate {
     font-weight: 500;
     opacity: 0.9 !important;
     line-height: 1.7rem !important;
+    padding-left: 1.5rem;
 }
 
 #about a {

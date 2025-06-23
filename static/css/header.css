@@ -125,3 +125,26 @@ li > .dropdown-toggle:focus{
 #search-results .card a:hover {
     color: var(--primary-color) !important;
 }
+
+/* Custom override for navbar spacing - reduce from 3rem to 1rem */
+@media (min-width: 992px) {
+    .navbar .container-fluid.mx-lg-5 {
+        margin-right: 1rem !important;
+        margin-left: 1rem !important;
+    }
+}
+
+/* Additional responsive spacing adjustments for better navbar spacing */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .navbar .container-fluid.mx-md-5 {
+        margin-right: 1rem !important;
+        margin-left: 1rem !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .navbar .container-fluid.mx-sm-5 {
+        margin-right: 1rem !important;
+        margin-left: 1rem !important;
+    }
+}

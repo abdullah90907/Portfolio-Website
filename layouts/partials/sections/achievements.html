@@ -1,46 +1,620 @@
 {{ if .Site.Params.achievements.enable | default false }}
 <section id="achievements" class="py-5">
     <div class="container">
-        <h3 class="text-center">{{ .Site.Params.achievements.title | default "Achievements" }}</h3>
-        <div class="px-0 px-md-5 px-lg-5">
-            <div class="row justify-content-center px-3 px-md-5 px-lg-5">
-                {{ range .Site.Params.achievements.items }}
-                {{ if .url }}
-                <div class="col-lg-4 col-md-6 my-3">
-                    <a class="card my-3 h-100 p-3" href="{{ .url }}" title="{{ .title }}" target="_blank">
-                        {{if .image }}
-                            <div class="card-head">
-                                <img class="card-img-top" src="{{ .image }}">
-                            </div>
-                        {{ end }}
-                        <div class="card-body bg-transparent">
-                            <h5 class="card-title bg-transparent">{{ .title }}</h5>
-                            <div class="card-text secondary-font">
-                                {{ .content }}
-                            </div>
+        <h3 class="text-center mb-5" style="color: var(--text-secondary-color) !important;">{{ .Site.Params.achievements.title | default "Achievements" }}</h3>
+        
+        <!-- Achievement Grid -->
+        <div class="achievement-carousel-wrapper">
+            <div class="achievement-carousel-track">
+                {{ range $index, $achievement := .Site.Params.achievements.items }}
+                <div class="achievement-slide">
+                    <div class="achievement-item" onclick="openImageModal('{{ .image }}', '{{ .title }}', '{{ .content }}', '{{ .url }}')">
+                        {{ if .image }}
+                        <div class="achievement-image">
+                            <img src="{{ .image }}" alt="{{ .title }}">
                         </div>
-                    </a>
-                </div>
-                {{ else }}
-                <div class="col-lg-4 col-md-6 my-3">
-                    <div class="card my-3 h-100 p-3" title="{{ .title }}">
-                        {{if .image }}
-                            <div class="card-head">
-                                <img class="card-img-top" src="{{ .image }}">
-                            </div>
                         {{ end }}
-                        <div class="card-body bg-transparent">
-                            <h5 class="card-title bg-transparent">{{ .title }}</h5>
-                            <div class="card-text secondary-font">
-                                {{ .content }}
-                            </div>
+                        <div class="achievement-info">
+                            <h4 class="achievement-title">{{ .title }}</h4>
+                            <p class="achievement-description">{{ .content }}</p>
                         </div>
                     </div>
                 </div>
                 {{ end }}
-                {{ end }}
+            </div>
+            
+            <!-- Navigation Controls -->
+            <button class="carousel-nav prev-nav" onclick="scrollCarousel(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-nav next-nav" onclick="scrollCarousel(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Enhanced Image Modal -->
+        <div id="imageModal" class="modal-overlay" onclick="closeImageModal()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <span class="modal-close" onclick="closeImageModal()">&times;</span>
+                <div class="modal-image-container">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <a id="modalViewDetails" href="" target="_blank" class="view-certificate-btn" style="display: none; margin: 20px auto 30px auto;">
+                    <i class="fas fa-external-link-alt"></i> View Details
+                </a>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Achievement Styles and JavaScript -->
+<style>
+/* Achievement Grid Styles */
+#achievements h3 {
+    color: var(--text-secondary-color) !important;
+}
+
+/* Carousel Wrapper */
+.achievement-carousel-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.achievement-carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+}
+
+.achievement-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.achievement-item {
+    background: var(--secondary-color) !important;
+    border-radius: 1rem;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0px 8px 56px rgb(15 80 100 / 16%);
+    border: none;
+    height: auto;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    animation: slideInCenter 0.6s ease-out both;
+    max-width: 500px;
+    width: 100%;
+    transform: scale(1);
+}
+
+.achievement-item:hover {
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: 0 0 11px rgb(15 80 100 / 20%);
+}
+
+.achievement-image {
+    margin-bottom: 25px;
+    flex-shrink: 0;
+}
+
+.achievement-image img {
+    max-width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    border-radius: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.achievement-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.achievement-title {
+    color: var(--text-color) !important;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.achievement-description {
+    color: var(--text-secondary-color) !important;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Navigation Controls */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #007bff;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 20px rgba(0, 123, 255, 0.3);
+    z-index: 10;
+}
+
+.carousel-nav:hover {
+    background: #0056b3;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0px 6px 25px rgba(0, 123, 255, 0.4);
+}
+
+.carousel-nav:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.prev-nav {
+    left: 15px;
+}
+
+.next-nav {
+    right: 15px;
+}
+
+/* Slide animations */
+@keyframes slideInCenter {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* Enhanced Modal Styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    animation: fade-in 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--secondary-color) !important;
+    border-radius: 1.2rem;
+    padding: 0;
+    max-width: 85%;
+    max-height: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0px 20px 80px rgba(0, 0, 0, 0.4);
+    animation: modalSlideIn 0.4s ease-out;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: var(--text-secondary-color);
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: var(--text-color);
+    background: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+}
+
+.modal-image-container {
+    /* background: linear-gradient(135deg, var(--background-color), var(--secondary-color)); */
+    padding: 10px 30px 5px 30px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+#modalImage {
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 1rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin: 0 auto;
+}
+
+.view-certificate-btn {
+    background: #0d6efd;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.view-certificate-btn:hover {
+    background: #0b5ed7;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(13, 110, 253, 0.4);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .achievement-carousel-wrapper {
+        max-width: 100%;
+        padding: 0 60px;
+    }
+    
+    .achievement-item {
+        padding: 25px;
+        min-height: 350px;
+        max-width: 400px;
+    }
+    
+    .achievement-image img {
+        max-height: 180px;
+    }
+    
+    .achievement-title {
+        font-size: 1.3rem;
+    }
+    
+    .achievement-description {
+        font-size: 0.95rem;
+    }
+    
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .prev-nav {
+        left: 10px;
+    }
+    
+    .next-nav {
+        right: 10px;
+    }
+    
+    .modal-content {
+        max-width: 95%;
+        max-height: 85%;
+    }
+    
+    .modal-image-container {
+        padding: 20px 20px 15px 20px;
+    }
+    
+    #modalImage {
+        border-radius: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .achievement-carousel-wrapper {
+        padding: 0 50px;
+    }
+    
+    .achievement-item {
+        padding: 20px;
+        min-height: 320px;
+        max-width: 100%;
+    }
+    
+    .achievement-image img {
+        max-height: 150px;
+    }
+    
+    .achievement-title {
+        font-size: 1.2rem;
+    }
+    
+    .achievement-description {
+        font-size: 0.9rem;
+    }
+    
+    .carousel-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .prev-nav {
+        left: 8px;
+    }
+    
+    .next-nav {
+        right: 8px;
+    }
+    
+    .modal-content {
+        max-width: 98%;
+        max-height: 80%;
+    }
+    
+    .modal-image-container {
+        padding: 15px 15px 10px 15px;
+    }
+    
+    #modalImage {
+        border-radius: 0.6rem;
+    }
+    
+    .view-certificate-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+</style>
+
+<script>
+let currentSlide = 0;
+let isAnimating = false;
+
+function scrollCarousel(direction) {
+    if (isAnimating) return; // Prevent multiple clicks during animation
+    
+    const achievementTrack = document.querySelector('.achievement-carousel-track');
+    const totalSlides = document.querySelectorAll('.achievement-slide').length;
+    
+    if (!achievementTrack || totalSlides === 0) return;
+    
+    isAnimating = true;
+    
+    // Update current slide index
+    currentSlide += direction;
+    
+    // Loop around if at the end
+    if (currentSlide >= totalSlides) {
+        currentSlide = 0;
+    } else if (currentSlide < 0) {
+        currentSlide = totalSlides - 1;
+    }
+    
+    // Apply transform to move the carousel
+    const translateX = -currentSlide * 100;
+    achievementTrack.style.transform = `translateX(${translateX}%)`;
+    
+    // Re-animate the current achievement item
+    const currentItem = document.querySelectorAll('.achievement-item')[currentSlide];
+    if (currentItem) {
+        currentItem.style.animation = 'none';
+        setTimeout(() => {
+            if (direction > 0) {
+                currentItem.style.animation = 'slideInFromRight 0.6s ease-out both';
+            } else {
+                currentItem.style.animation = 'slideInFromLeft 0.6s ease-out both';
+            }
+        }, 50);
+    }
+    
+    // Reset animation lock after transition completes
+    setTimeout(() => {
+        isAnimating = false;
+    }, 500);
+}
+
+// Modal functionality
+function openImageModal(imageSrc, title, description, url) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalViewDetails = document.getElementById('modalViewDetails');
+    const modalContent = document.querySelector('.modal-content');
+    
+    // Set modal content - only image and certificate link
+    modalImage.src = imageSrc;
+    modalImage.alt = title;
+    
+    // Show/hide external link based on URL availability
+    if (url && url.trim() !== '' && url !== 'undefined') {
+        modalViewDetails.href = url;
+        modalViewDetails.style.display = 'inline-flex';
+    } else {
+        modalViewDetails.style.display = 'none';
+    }
+    
+    // Show modal
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    
+    // Reset scroll position to top
+    if (modalContent) {
+        modalContent.scrollTop = 0;
+    }
+    
+    // Ensure modal content is scrollable if needed
+    setTimeout(() => {
+        if (modalContent) {
+            const modalHeight = modalContent.scrollHeight;
+            const viewportHeight = modalContent.clientHeight;
+            if (modalHeight > viewportHeight) {
+                modalContent.style.overflowY = 'scroll';
+            }
+        }
+    }, 100);
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Initialize event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize carousel position
+    const achievementTrack = document.querySelector('.achievement-carousel-track');
+    if (achievementTrack) {
+        achievementTrack.style.transform = 'translateX(0%)';
+    }
+    
+    // Keyboard navigation for carousel and modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+            scrollCarousel(-1);
+        } else if (e.key === 'ArrowRight') {
+            scrollCarousel(1);
+        } else if (e.key === 'Escape') {
+            closeImageModal();
+        }
+    });
+    
+    // Modal click outside to close
+    const modal = document.getElementById('imageModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeImageModal();
+            }
+        });
+    }
+    
+    // Touch/swipe support for mobile
+    let startX = null;
+    let startTime = null;
+    const carouselWrapper = document.querySelector('.achievement-carousel-wrapper');
+    
+    if (carouselWrapper) {
+        carouselWrapper.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+            startTime = Date.now();
+        });
+        
+        carouselWrapper.addEventListener('touchend', function(e) {
+            if (!startX || isAnimating) return;
+            
+            const endX = e.changedTouches[0].clientX;
+            const endTime = Date.now();
+            const diffX = startX - endX;
+            const diffTime = endTime - startTime;
+            
+            // Only register swipe if it's fast enough and long enough
+            if (Math.abs(diffX) > 50 && diffTime < 300) {
+                if (diffX > 0) {
+                    scrollCarousel(1); // Swipe left - next
+                } else {
+                    scrollCarousel(-1); // Swipe right - previous
+                }
+            }
+            
+            startX = null;
+            startTime = null;
+        });
+        
+        // Prevent default touch behavior
+        carouselWrapper.addEventListener('touchmove', function(e) {
+            if (Math.abs(startX - e.touches[0].clientX) > 10) {
+                e.preventDefault();
+            }
+        });
+    }
+});
+</script>
 {{ end }}
