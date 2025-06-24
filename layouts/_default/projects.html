@@ -115,18 +115,25 @@ body {
     width: 100%;
     border-radius: 20px;
     padding: 10px;
-    background: #ffffff;
+    background: transparent;
     transition: transform 0.3s ease;
 }
 .projects-page-card .card-head {
     overflow: hidden;
-    background: #ffffff;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 200px;
     padding: 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode support for project images */
+@media (prefers-color-scheme: dark) {
+    .projects-page-card .card-head {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 }
 .projects-page-card .card-body {
     padding: 20px;
