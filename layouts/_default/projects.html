@@ -7,7 +7,7 @@
 /* Custom styles for projects page */
 .projects-page-card {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    height: 400px;
+    height: 450px;
     margin-bottom: 20px;
     border-radius: 12px;
     overflow: hidden;
@@ -15,6 +15,8 @@
     transform: translateY(40px);
     animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
 }
 .projects-page-card:nth-child(1) {
     animation-delay: 0.1s;
@@ -28,6 +30,9 @@
 .projects-page-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+.projects-page-card:hover .card-img-top {
+    transform: scale(1.05);
 }
 
 /* Enhanced page load animations */
@@ -104,12 +109,14 @@ body {
     box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
 }
 .projects-page-card .card-img-top {
-    height: 180px;
+    height: 200px;
     object-fit: cover;
+    object-position: center;
     width: 100%;
-    border-radius: 0;
-    padding: 0;
+    border-radius: 20px;
+    padding: 10px;
     background: #ffffff;
+    transition: transform 0.3s ease;
 }
 .projects-page-card .card-head {
     overflow: hidden;
@@ -117,27 +124,48 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 180px;
+    height: 200px;
     padding: 0;
+    border-bottom: 1px solid #eee;
 }
 .projects-page-card .card-body {
-    padding: 15px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    min-height: 180px;
 }
 .projects-page-card .card-text {
     font-size: 0.9rem;
     flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
 }
 .projects-page-card .badge {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     margin: 2px;
+    padding: 4px 8px;
 }
 .projects-page-card .card-title {
     font-size: 1.1rem;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+    min-height: 2.6em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.projects-page-card .card-footer {
+    padding: 15px 20px;
+    background-color: transparent;
+    border-top: 1px solid #eee;
 }
 .projects-page-card .btn-primary {
     background-color: #007bff !important;
@@ -393,6 +421,105 @@ body {
                     </div>
                 </div>
 
+                <!-- LangMaster -->
+                <div class="projects-col my-2">
+                    <div class="card projects-page-card">
+                        <div class="card-head">
+                            <img class="card-img-top" src="/images/lang.png" alt="LangMaster">
+                        </div>
+                        <div class="card-body bg-transparent">
+                            <div class="pb-2 bg-transparent">
+                                <span class="badge badge-secondary">Python</span>
+                                <span class="badge badge-secondary">Streamlit</span>
+                                <span class="badge badge-secondary">NLP</span>
+                            </div>
+                            <h5 class="card-title bg-transparent">LangMaster – AI Language Learning Platform</h5>
+                            <div class="card-text bg-transparent secondary-font">
+                                An AI-powered language learning platform that provides personalized lessons, real-time pronunciation feedback, and adaptive learning experiences.
+                            </div>
+                        </div>
+                        <div class="card-footer py-2">
+                            <span class="m-1">
+                                <a href="https://github.com/abdullah90907/Language-Chatbot" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </span>
+                            <span class="float-end">
+                                <a class="btn btn-sm btn-primary" href="https://langmaster-ai.streamlit.app/" target="_blank">
+                                    Live Demo
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 2 Projects -->
+            <div class="projects-page" id="page2" style="display: none;">
+                <!-- EmergencyCore -->
+                <div class="projects-col my-2">
+                    <div class="card projects-page-card">
+                        <div class="card-head">
+                            <img class="card-img-top" src="/images/emergencycore post.png" alt="EmergencyCore">
+                        </div>
+                        <div class="card-body bg-transparent">
+                            <div class="pb-2 bg-transparent">
+                                <span class="badge badge-secondary">AI</span>
+                                <span class="badge badge-secondary">Grok API</span>
+                                <span class="badge badge-secondary">Disaster Management</span>
+                            </div>
+                            <h5 class="card-title bg-transparent">EmergencyCore – AI-Powered Disaster Prediction System</h5>
+                            <div class="card-text bg-transparent secondary-font">
+                                An AI-based disaster prediction and management platform built during the Doge AI Hackathon, leveraging Grok API to analyze text and images for early warnings.
+                            </div>
+                        </div>
+                        <div class="card-footer py-2">
+                            <span class="m-1">
+                                <a href="https://github.com/abdullah90907/EmergencyCore" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </span>
+                            <span class="float-end">
+                                <a class="btn btn-sm btn-primary" href="https://lnkd.in/deZuR-X2" target="_blank">
+                                    Live Demo
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LungLens -->
+                <div class="projects-col my-2">
+                    <div class="card projects-page-card">
+                        <div class="card-head">
+                            <img class="card-img-top" src="/images/lunglens-post.png" alt="LungLens">
+                        </div>
+                        <div class="card-body bg-transparent">
+                            <div class="pb-2 bg-transparent">
+                                <span class="badge badge-secondary">Python</span>
+                                <span class="badge badge-secondary">TensorFlow</span>
+                                <span class="badge badge-secondary">Medical AI</span>
+                            </div>
+                            <h5 class="card-title bg-transparent">LungLens – AI Medical Imaging Platform</h5>
+                            <div class="card-text bg-transparent secondary-font">
+                                An AI-powered medical imaging platform for lung disease detection and analysis using deep learning models for early diagnosis and treatment planning.
+                            </div>
+                        </div>
+                        <div class="card-footer py-2">
+                            <span class="m-1">
+                                <a href="https://github.com/abdullah90907/LungLens" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </span>
+                            <span class="float-end">
+                                <a class="btn btn-sm btn-primary" href="https://lunglens-ai.streamlit.app/" target="_blank">
+                                    Live Demo
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Echo AI Project -->
                 <div class="projects-col my-2">
                     <div class="card projects-page-card">
@@ -418,105 +545,6 @@ body {
                             </span>
                             <span class="float-end">
                                 <a class="btn btn-sm btn-primary" href="https://echoaichatbot.streamlit.app/" target="_blank">
-                                    Live Demo
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Page 2 Projects -->
-            <div class="projects-page" id="page2" style="display: none;">
-                <!-- DataViz Pro -->
-                <div class="projects-col my-2">
-                    <div class="card projects-page-card">
-                        <div class="card-head">
-                            <img class="card-img-top" src="/images/portfolio.jpg" alt="DataViz Pro">
-                        </div>
-                        <div class="card-body bg-transparent">
-                            <div class="pb-2 bg-transparent">
-                                <span class="badge badge-secondary">Python</span>
-                                <span class="badge badge-secondary">Matplotlib</span>
-                                <span class="badge badge-secondary">Pandas</span>
-                            </div>
-                            <h5 class="card-title bg-transparent">DataViz Pro – Analytics Dashboard</h5>
-                            <div class="card-text bg-transparent secondary-font">
-                                A comprehensive data visualization platform that transforms complex datasets into interactive charts and insights for business intelligence.
-                            </div>
-                        </div>
-                        <div class="card-footer py-2">
-                            <span class="m-1">
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </span>
-                            <span class="float-end">
-                                <a class="btn btn-sm btn-primary" href="#" target="_blank">
-                                    Live Demo
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SmartLearn AI -->
-                <div class="projects-col my-2">
-                    <div class="card projects-page-card">
-                        <div class="card-head">
-                            <img class="card-img-top" src="/images/portfolio.jpg" alt="SmartLearn AI">
-                        </div>
-                        <div class="card-body bg-transparent">
-                            <div class="pb-2 bg-transparent">
-                                <span class="badge badge-secondary">TensorFlow</span>
-                                <span class="badge badge-secondary">React</span>
-                                <span class="badge badge-secondary">FastAPI</span>
-                            </div>
-                            <h5 class="card-title bg-transparent">SmartLearn AI – Education Platform</h5>
-                            <div class="card-text bg-transparent secondary-font">
-                                An AI-powered educational platform that personalizes learning experiences using machine learning algorithms to adapt to student needs.
-                            </div>
-                        </div>
-                        <div class="card-footer py-2">
-                            <span class="m-1">
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </span>
-                            <span class="float-end">
-                                <a class="btn btn-sm btn-primary" href="#" target="_blank">
-                                    Live Demo
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TaskFlow Manager -->
-                <div class="projects-col my-2">
-                    <div class="card projects-page-card">
-                        <div class="card-head">
-                            <img class="card-img-top" src="/images/portfolio.jpg" alt="TaskFlow Manager">
-                        </div>
-                        <div class="card-body bg-transparent">
-                            <div class="pb-2 bg-transparent">
-                                <span class="badge badge-secondary">Vue.js</span>
-                                <span class="badge badge-secondary">Node.js</span>
-                                <span class="badge badge-secondary">MongoDB</span>
-                            </div>
-                            <h5 class="card-title bg-transparent">TaskFlow Manager – Project Tool</h5>
-                            <div class="card-text bg-transparent secondary-font">
-                                A comprehensive project management tool with AI-powered task prioritization and team collaboration features for enhanced productivity.
-                            </div>
-                        </div>
-                        <div class="card-footer py-2">
-                            <span class="m-1">
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </span>
-                            <span class="float-end">
-                                <a class="btn btn-sm btn-primary" href="#" target="_blank">
                                     Live Demo
                                 </a>
                             </span>
