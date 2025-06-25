@@ -295,13 +295,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - ❌ **Liability** - The author is not liable for any damages
 - ❌ **Warranty** - No warranty is provided
 
-## � Acknowledgments
-
-- [Hugo](https://gohugo.io/) - The world's fastest framework for building websites
-- [hugo-profile](https://github.com/gurusabarish/hugo-profile) - Beautiful Hugo theme
-- [Font Awesome](https://fontawesome.com/) - Icons
-- [Bootstrap](https://getbootstrap.com/) - CSS Framework
-- [Netlify](https://netlify.com/) - Hosting and deployment platform
 
 ## 📞 Contact
 
