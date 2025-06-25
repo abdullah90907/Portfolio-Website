@@ -440,6 +440,8 @@
         max-width: 95%;
         max-height: 85%;
         margin: 20px;
+        width: 90%; /* Ensure proper width on mobile */
+        min-width: 280px; /* Minimum width for readability */
     }
     
     .modal-image-container {
@@ -449,11 +451,16 @@
     #modalImage {
         border-radius: 0.8rem;
         max-height: 300px;
+        width: 100%; /* Ensure image takes full container width */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: contain; /* Prevent image distortion */
     }
     
     .view-certificate-btn {
         padding: 12px 20px;
         font-size: 0.95rem;
+        width: auto; /* Allow button to size based on content */
+        min-width: 160px; /* Minimum button width */
     }
 }
 
@@ -562,6 +569,9 @@
         max-height: 85%;
         margin: 10px;
         border-radius: 1rem;
+        width: 95%; /* Better width for phones */
+        min-width: 260px; /* Minimum width for small phones */
+        max-width: 350px; /* Maximum width to prevent over-stretching */
     }
     
     .modal-image-container {
@@ -571,6 +581,10 @@
     #modalImage {
         border-radius: 0.6rem;
         max-height: 250px;
+        width: 100%; /* Full container width */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: contain; /* Prevent distortion */
+        max-width: 100%; /* Prevent overflow */
     }
     
     .modal-close {
@@ -585,6 +599,9 @@
         padding: 10px 18px;
         font-size: 0.9rem;
         margin: 15px auto 20px auto !important;
+        width: auto; /* Allow button to size based on content */
+        min-width: 140px; /* Minimum button width for phones */
+        max-width: 90%; /* Prevent button from being too wide */
     }
 }
 
@@ -678,6 +695,96 @@
     }
 }
 
+/* Extra small devices modal improvements */
+@media (max-width: 360px) {
+    .modal-content {
+        max-width: 96%;
+        max-height: 80%;
+        margin: 8px;
+        min-width: 240px; /* Minimum for very small screens */
+        max-width: 320px; /* Maximum for very small screens */
+        width: 92%;
+    }
+    
+    .modal-image-container {
+        padding: 10px 10px 6px 10px;
+    }
+    
+    #modalImage {
+        border-radius: 0.5rem;
+        max-height: 200px; /* Smaller for tiny screens */
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    
+    .modal-close {
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+        top: 8px;
+        right: 12px;
+    }
+    
+    .view-certificate-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+        margin: 12px auto 15px auto !important;
+        min-width: 120px;
+        max-width: 85%;
+    }
+}
+
+/* Landscape mode modal adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .modal-content {
+        max-height: 90%; /* More height in landscape */
+        max-width: 80%; /* Less width in landscape */
+        min-width: 300px;
+    }
+    
+    #modalImage {
+        max-height: 200px; /* Smaller height in landscape */
+    }
+    
+    .modal-image-container {
+        padding: 8px 15px 5px 15px; /* Adjust padding for landscape */
+    }
+}
+
+/* Modal touch improvements for mobile */
+@media (max-width: 768px) {
+    .modal-overlay {
+        /* Improve touch scrolling */
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+    
+    .modal-content {
+        /* Better touch scrolling */
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        /* Prevent zoom on double tap */
+        touch-action: manipulation;
+    }
+    
+    .modal-close {
+        /* Larger touch target */
+        min-width: 44px;
+        min-height: 44px;
+        /* Better touch feedback */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .view-certificate-btn {
+        /* Better touch target */
+        min-height: 44px;
+        /* Prevent zoom on double tap */
+        touch-action: manipulation;
+        /* Better touch feedback */
+        -webkit-tap-highlight-color: rgba(13, 110, 253, 0.2);
+    }
+}
 </style>
 
 <script>
@@ -772,6 +879,32 @@ function openImageModal(imageSrc, title, description, url) {
     // Reset scroll position to top
     if (modalContent) {
         modalContent.scrollTop = 0;
+    }
+    
+    // Mobile-specific adjustments
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        // Ensure modal is properly centered on mobile
+        modalContent.style.transform = 'translate(-50%, -50%)';
+        modalContent.style.top = '50%';
+        modalContent.style.left = '50%';
+        
+        // Adjust modal size based on screen size
+        if (window.innerWidth <= 360) {
+            modalContent.style.maxWidth = '96%';
+            modalContent.style.width = '92%';
+        } else if (window.innerWidth <= 480) {
+            modalContent.style.maxWidth = '95%';
+            modalContent.style.width = '90%';
+        }
+        
+        // Ensure image loads properly on mobile
+        modalImage.onload = function() {
+            // Force a reflow to ensure proper sizing
+            modalContent.style.display = 'none';
+            modalContent.offsetHeight; // Trigger reflow
+            modalContent.style.display = 'flex';
+        };
     }
     
     // Ensure modal content is scrollable if needed
