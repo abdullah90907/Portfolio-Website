@@ -1,8 +1,14 @@
 # Abdullah Siddique - Portfolio Website
 
+[![Live Website](https://img.shields.io/badge/🌐_Live_Website-abdullah--siddique--dev.netlify.app-blue?style=for-the-badge)](https://abdullah-siddique-dev.netlify.app/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Abdullah_Siddique-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mr-abdullah-siddique)
+[![GitHub](https://img.shields.io/badge/GitHub-abdullah90907-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/abdullah90907)
+
 ![Portfolio Preview](static/images/home-page.png)
 
 A modern, responsive portfolio website built with Hugo and the hugo-profile theme. This portfolio showcases my projects, achievements, blog posts, and professional journey in AI/ML, web development, and software engineering.
+
+🌟 **[View Live Website →](https://abdullah-siddique-dev.netlify.app/)**
 
 ## 🌟 Features
 
@@ -83,13 +89,13 @@ my-site/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/portfolio-website.git
-   cd portfolio-website
+   git clone https://github.com/abdullah90907/Portfolio-Website.git
+   cd Portfolio-Website
    ```
 
 2. **Initialize Hugo modules** (if using modules)
    ```bash
-   hugo mod init github.com/yourusername/portfolio-website
+   hugo mod init github.com/abdullah90907/Portfolio-Website
    ```
 
 3. **Install dependencies**
@@ -164,7 +170,7 @@ params:
     enable: true
     linkedin:
       enable: true
-      profileId: "abdullah-siddique-ai"
+      profileId: "mr-abdullah-siddique"
 ```
 
 ## 📸 Screenshots
@@ -261,8 +267,8 @@ draft: false
 description: "Project description"
 image: "/images/project-image.png"
 technologies: ["React", "Node.js"]
-github: "[https://github.com/abdullah90907/Portfolio-Website](https://github.com/abdullah90907/Portfolio-Website)"
-demo: "[abdullah-siddique-dev.netlify.app](https://abdullah-siddique-dev.netlify.app/)"
+github: "https://github.com/abdullah90907/Portfolio-Website"
+demo: "https://abdullah-siddique-dev.netlify.app/"
 ---
 
 Project content...
@@ -280,15 +286,37 @@ Project content...
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+### MIT License Summary
+- ✅ **Commercial use** - You can use this code for commercial projects
+- ✅ **Modification** - You can modify and adapt the code
+- ✅ **Distribution** - You can distribute the original or modified code
+- ✅ **Private use** - You can use the code privately
+- ⚠️ **License and copyright notice** - Must include the original license and copyright notice
+- ❌ **Liability** - The author is not liable for any damages
+- ❌ **Warranty** - No warranty is provided
 
+## � Acknowledgments
+
+- [Hugo](https://gohugo.io/) - The world's fastest framework for building websites
+- [hugo-profile](https://github.com/gurusabarish/hugo-profile) - Beautiful Hugo theme
+- [Font Awesome](https://fontawesome.com/) - Icons
+- [Bootstrap](https://getbootstrap.com/) - CSS Framework
+- [Netlify](https://netlify.com/) - Hosting and deployment platform
 
 ## 📞 Contact
 
-- **Email**: [abdullahsiddique773@gmail.com](mailto:your.abdullahsiddique773@gmail.com)
+- **Email**: [abdullahsiddique773@gmail.com](mailto:abdullahsiddique773@gmail.com)
 - **LinkedIn**: [Abdullah Siddique](https://linkedin.com/in/mr-abdullah-siddique)
-- **GitHub**: [abdullah90907](https://github.com/abdullah90907/)
+- **GitHub**: [abdullah90907](https://github.com/abdullah90907)
 - **Website**: [abdullah-siddique-dev.netlify.app](https://abdullah-siddique-dev.netlify.app/)
 
 ---
 
 ⭐ **If you found this portfolio helpful, please give it a star!** ⭐
+
+## 🔗 Quick Links
+
+- 🌐 **[Live Website](https://abdullah-siddique-dev.netlify.app/)**
+- 📱 **[LinkedIn Profile](https://linkedin.com/in/mr-abdullah-siddique)**
+- 💻 **[GitHub Repository](https://github.com/abdullah90907/Portfolio-Website)**
+- 📧 **[Email Contact](mailto:abdullahsiddique773@gmail.com)**
