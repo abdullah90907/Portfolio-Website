@@ -64,12 +64,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 450px; /* Ensure minimum height for proper centering */
 }
 
 .achievement-carousel-track {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
+    align-items: center; /* Center items vertically */
 }
 
 .achievement-slide {
@@ -347,95 +349,97 @@
 @media (max-width: 768px) {
     .achievement-carousel-wrapper {
         max-width: 100%;
-        padding: 0 60px;
+        padding: 0 70px; /* More padding to create space for navigation buttons */
+        min-height: 380px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
-    .achievement-item {
-        padding: 25px;
-        min-height: 350px;
-        max-width: 400px;
+    .achievement-carousel-track {
+        align-items: center;
+        height: 100%;
+        width: 100%; /* Ensure full width usage */
     }
     
-    .achievement-image img {
-        max-height: 180px;
-    }
-    
-    .achievement-title {
-        font-size: 1.3rem;
-    }
-    
-    .achievement-description {
-        font-size: 0.95rem;
-    }
-    
-    .carousel-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-    
-    .prev-nav {
-        left: 10px;
-    }
-    
-    .next-nav {
-        right: 10px;
-    }
-    
-    .modal-content {
-        max-width: 95%;
-        max-height: 85%;
-    }
-    
-    .modal-image-container {
-        padding: 20px 20px 15px 20px;
-    }
-    
-    #modalImage {
-        border-radius: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .achievement-carousel-wrapper {
-        padding: 0 50px;
+    .achievement-slide {
+        padding: 10px 10px; /* Balanced padding */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 360px;
+        width: 100%; /* Full slide width */
     }
     
     .achievement-item {
         padding: 20px;
         min-height: 320px;
-        max-width: 100%;
+        max-height: 340px;
+        max-width: calc(100vw - 160px); /* Calculate width based on viewport minus navigation space */
+        width: 95%; /* Use most of available space */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .achievement-image {
+        margin-bottom: 15px;
+        flex-shrink: 0; /* Prevent shrinking */
     }
     
     .achievement-image img {
-        max-height: 150px;
+        max-height: 140px; /* Consistent image size */
+        width: 100%;
+        object-fit: contain;
+    }
+    
+    .achievement-info {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
     }
     
     .achievement-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        line-height: 1.2;
+        height: auto;
+        min-height: 2.4em; /* Consistent title height */
     }
     
     .achievement-description {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        line-height: 1.3;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
     }
     
     .carousel-nav {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+        z-index: 20;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
     }
     
     .prev-nav {
-        left: 8px;
+        left: 12px; /* Better positioning from edge */
     }
     
     .next-nav {
-        right: 8px;
+        right: 12px; /* Better positioning from edge */
     }
     
     .modal-content {
-        max-width: 98%;
-        max-height: 80%;
+        max-width: 95%;
+        max-height: 85%;
+        margin: 20px;
     }
     
     .modal-image-container {
@@ -443,12 +447,234 @@
     }
     
     #modalImage {
-        border-radius: 0.6rem;
+        border-radius: 0.8rem;
+        max-height: 300px;
     }
     
     .view-certificate-btn {
-        padding: 12px 25px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #achievements {
+        padding: 30px 0 !important;
+    }
+    
+    #achievements h3 {
+        font-size: 1.8rem;
+        margin-bottom: 30px !important;
+    }
+    
+    .achievement-carousel-wrapper {
+        padding: 0 65px; /* Adequate padding for navigation buttons */
+        max-width: 100%;
+        min-height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .achievement-carousel-track {
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .achievement-slide {
+        padding: 10px 8px; /* Balanced padding for phones */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 330px;
+        width: 100%;
+    }
+    
+    .achievement-item {
+        padding: 18px;
+        min-height: 300px;
+        max-height: 320px;
+        max-width: calc(100vw - 140px); /* Calculate width for phones minus navigation space */
+        width: 92%; /* Use most available space on phones */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .achievement-image {
+        margin-bottom: 12px;
+        flex-shrink: 0;
+    }
+    
+    .achievement-image img {
+        max-height: 120px; /* Smaller images for phones */
+        width: 100%;
+        object-fit: contain;
+        border-radius: 0.6rem;
+    }
+    
+    .achievement-info {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .achievement-title {
         font-size: 1rem;
+        margin-bottom: 8px;
+        line-height: 1.2;
+        min-height: 2.4em; /* Consistent title height */
+    }
+    
+    .achievement-description {
+        font-size: 0.8rem;
+        line-height: 1.3;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+    }
+    
+    .carousel-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+        box-shadow: 0px 3px 15px rgba(0, 123, 255, 0.3);
+        z-index: 20;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .prev-nav {
+        left: 10px; /* Better spacing for phones */
+    }
+    
+    .next-nav {
+        right: 10px; /* Better spacing for phones */
+    }
+    
+    .modal-content {
+        max-width: 98%;
+        max-height: 85%;
+        margin: 10px;
+        border-radius: 1rem;
+    }
+    
+    .modal-image-container {
+        padding: 12px 12px 8px 12px;
+    }
+    
+    #modalImage {
+        border-radius: 0.6rem;
+        max-height: 250px;
+    }
+    
+    .modal-close {
+        width: 35px;
+        height: 35px;
+        font-size: 24px;
+        top: 10px;
+        right: 15px;
+    }
+    
+    .view-certificate-btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+        margin: 15px auto 20px auto !important;
+    }
+}
+
+/* Extra small devices (very small phones) */
+@media (max-width: 360px) {
+    .achievement-carousel-wrapper {
+        padding: 0 60px; /* More space for navigation on tiny screens */
+        min-height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .achievement-slide {
+        padding: 8px 6px; /* Optimized padding for tiny screens */
+        min-height: 300px;
+        width: 100%;
+    }
+    
+    .achievement-item {
+        padding: 15px;
+        min-height: 280px;
+        max-height: 300px;
+        max-width: calc(100vw - 130px); /* Calculate width for tiny screens minus navigation space */
+        width: 90%; /* Use available space efficiently */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .achievement-image img {
+        max-height: 100px;
+    }
+    
+    .achievement-title {
+        font-size: 0.95rem;
+        min-height: 2.2em;
+    }
+    
+    .achievement-description {
+        font-size: 0.75rem;
+    }
+    
+    .carousel-nav {
+        width: 34px;
+        height: 34px;
+        font-size: 0.8rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .prev-nav {
+        left: 8px; /* Adequate spacing for tiny screens */
+    }
+    
+    .next-nav {
+        right: 8px; /* Adequate spacing for tiny screens */
+    }
+}
+
+/* Landscape mode for small devices */
+@media (max-width: 768px) and (orientation: landscape) {
+    .achievement-carousel-wrapper {
+        min-height: 300px;
+    }
+    
+    .achievement-slide {
+        min-height: 280px;
+    }
+    
+    .achievement-item {
+        min-height: 260px;
+        max-height: 280px;
+        padding: 15px;
+        max-width: 400px; /* Wider in landscape */
+    }
+    
+    .achievement-image img {
+        max-height: 90px; /* Smaller in landscape */
+    }
+    
+    .achievement-title {
+        font-size: 1rem;
+        margin-bottom: 6px;
+        min-height: 2em;
+    }
+    
+    .achievement-description {
+        font-size: 0.8rem;
     }
 }
 
@@ -494,6 +720,25 @@ function scrollCarousel(direction) {
             }
         }, 50);
     }
+    
+    // Ensure mobile centering after navigation
+    setTimeout(() => {
+        if (window.innerWidth <= 768) {
+            const currentSlide = document.querySelectorAll('.achievement-slide')[currentSlide];
+            const carouselWrapper = document.querySelector('.achievement-carousel-wrapper');
+            
+            if (currentSlide && carouselWrapper) {
+                // Force centering for mobile
+                carouselWrapper.style.display = 'flex';
+                carouselWrapper.style.alignItems = 'center';
+                carouselWrapper.style.justifyContent = 'center';
+                
+                currentSlide.style.display = 'flex';
+                currentSlide.style.justifyContent = 'center';
+                currentSlide.style.alignItems = 'center';
+            }
+        }
+    }, 100);
     
     // Reset animation lock after transition completes
     setTimeout(() => {
@@ -555,6 +800,93 @@ document.addEventListener('DOMContentLoaded', function() {
         achievementTrack.style.transform = 'translateX(0%)';
     }
     
+    // Function to ensure proper centering on mobile
+    function ensureMobileCentering() {
+        const isMobile = window.innerWidth <= 768;
+        const achievementItems = document.querySelectorAll('.achievement-item');
+        const carouselWrapper = document.querySelector('.achievement-carousel-wrapper');
+        const carouselTrack = document.querySelector('.achievement-carousel-track');
+        
+        if (isMobile && carouselWrapper) {
+            // Ensure wrapper has proper display properties for centering (mobile only)
+            carouselWrapper.style.display = 'flex';
+            carouselWrapper.style.alignItems = 'center';
+            carouselWrapper.style.justifyContent = 'center';
+            
+            // Ensure track centers its content (mobile only)
+            if (carouselTrack) {
+                carouselTrack.style.alignItems = 'center';
+                carouselTrack.style.height = '100%';
+            }
+            
+            // Ensure slides are properly centered (mobile only)
+            const slides = document.querySelectorAll('.achievement-slide');
+            slides.forEach(slide => {
+                slide.style.display = 'flex';
+                slide.style.justifyContent = 'center';
+                slide.style.alignItems = 'center';
+            });
+            
+            // Center each achievement item (mobile only)
+            achievementItems.forEach(item => {
+                item.style.margin = '0 auto';
+                item.style.display = 'flex';
+                item.style.flexDirection = 'column';
+                item.style.justifyContent = 'space-between';
+            });
+        } else {
+            // Reset mobile-specific styles for larger screens
+            if (carouselWrapper) {
+                carouselWrapper.style.display = '';
+                carouselWrapper.style.alignItems = '';
+                carouselWrapper.style.justifyContent = '';
+            }
+            
+            if (carouselTrack) {
+                carouselTrack.style.alignItems = '';
+                carouselTrack.style.height = '';
+            }
+            
+            const slides = document.querySelectorAll('.achievement-slide');
+            slides.forEach(slide => {
+                slide.style.display = '';
+                slide.style.justifyContent = '';
+                slide.style.alignItems = '';
+            });
+            
+            achievementItems.forEach(item => {
+                item.style.margin = '';
+                item.style.display = '';
+                item.style.flexDirection = '';
+                item.style.justifyContent = '';
+            });
+        }
+    }
+    
+    // Apply centering on load
+    ensureMobileCentering();
+    
+    // Add mobile-specific improvements
+    let isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        // Add touch-friendly styling for mobile
+        const achievementItems = document.querySelectorAll('.achievement-item');
+        achievementItems.forEach(item => {
+            item.style.cursor = 'pointer';
+            item.style.userSelect = 'none';
+            item.style.webkitUserSelect = 'none';
+            item.style.webkitTouchCallout = 'none';
+        });
+        
+        // Optimize navigation buttons for touch
+        const navButtons = document.querySelectorAll('.carousel-nav');
+        navButtons.forEach(button => {
+            button.style.touchAction = 'manipulation';
+            // Ensure buttons are above other elements
+            button.style.zIndex = '20';
+        });
+    }
+    
     // Keyboard navigation for carousel and modal
     document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowLeft') {
@@ -576,14 +908,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Handle viewport changes (orientation change, etc.)
+    window.addEventListener('resize', function() {
+        const newIsMobile = window.innerWidth <= 768;
+        
+        // Re-apply centering when viewport changes
+        setTimeout(() => {
+            ensureMobileCentering();
+            
+            // Only reset carousel position if switching between mobile and desktop
+            if ((isMobile && !newIsMobile) || (!isMobile && newIsMobile)) {
+                if (achievementTrack) {
+                    achievementTrack.style.transform = 'translateX(0%)';
+                    currentSlide = 0;
+                }
+            }
+        }, 300);
+        
+        // Update mobile state
+        isMobile = newIsMobile;
+    });
+    
     // Touch/swipe support for mobile
     let startX = null;
     let startTime = null;
+    let startY = null;
     const carouselWrapper = document.querySelector('.achievement-carousel-wrapper');
     
     if (carouselWrapper) {
         carouselWrapper.addEventListener('touchstart', function(e) {
             startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
             startTime = Date.now();
         });
         
@@ -591,12 +946,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!startX || isAnimating) return;
             
             const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
             const endTime = Date.now();
             const diffX = startX - endX;
+            const diffY = startY - endY;
             const diffTime = endTime - startTime;
             
-            // Only register swipe if it's fast enough and long enough
-            if (Math.abs(diffX) > 50 && diffTime < 300) {
+            // Only register swipe if it's horizontal and fast enough
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30 && diffTime < 500) {
                 if (diffX > 0) {
                     scrollCarousel(1); // Swipe left - next
                 } else {
@@ -605,14 +962,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             startX = null;
+            startY = null;
             startTime = null;
         });
         
-        // Prevent default touch behavior
+        // Prevent default touch behavior only for horizontal swipes
         carouselWrapper.addEventListener('touchmove', function(e) {
-            if (Math.abs(startX - e.touches[0].clientX) > 10) {
-                e.preventDefault();
+            if (startX && startY) {
+                const currentX = e.touches[0].clientX;
+                const currentY = e.touches[0].clientY;
+                const diffX = Math.abs(startX - currentX);
+                const diffY = Math.abs(startY - currentY);
+                
+                // If horizontal movement is greater than vertical, prevent default
+                if (diffX > diffY && diffX > 10) {
+                    e.preventDefault();
+                }
             }
+        }, { passive: false });
+        
+        // Add visual feedback for touch interactions
+        carouselWrapper.addEventListener('touchstart', function() {
+            carouselWrapper.style.opacity = '0.8';
+        });
+        
+        carouselWrapper.addEventListener('touchend', function() {
+            carouselWrapper.style.opacity = '1';
         });
     }
 });

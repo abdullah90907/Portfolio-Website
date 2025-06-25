@@ -114,7 +114,7 @@ params:
   navbar:
     align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
     brandLogo: "/images/logon.png" # Logo for the brand | default is the favicon variable
-    brandLogoLight: "/images/logo.png" # Logo for light mode (if you have one)
+    brandLogoLight: "/images/logo-white.png" # Logo for light mode (if you have one)
     brandLogoDark: "/images/logon.png" # Logo for dark mode
     showBrandLogo: true # Show brand logo in nav bar | default is true
     brandName: "Abdullah Siddique" # Brand name for the brand | default is the title variable
