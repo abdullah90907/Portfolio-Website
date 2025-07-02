@@ -204,7 +204,7 @@ params:
         date: "May 2025 - June 2025"
         featuredLink:
           enable: true
-          url: "https://codeinplace.stanford.edu/cip5/user/x1Bvrk9CBeTyVQAfS5pOTxPER8z2"
+          url: "https://digitalcredential.stanford.edu/check/20A0A4C8C9060D13247CB8805F86BE56EA067909DD1CE8F5F2F8AB919A58B6DDR0VwNkR4bmhGL21ycjllWFowZXZhcFovL1ZnRWVmM1N3WjlHV3Q0NFFJZ2RldFhl"
         info:
           enable: true
           content: Volunteered as a Section Leader at Stanford’s Code in Place, teaching Python for one month.
@@ -299,26 +299,27 @@ params:
     enable: true
     title: "Achievements"
     items:
+      - title: Stanford Code in Place 2025
+        content: Served as a Section Leader, mentoring students worldwide in Python programming through Stanford's CS106A curriculum.
+        url: https://digitalcredential.stanford.edu/check/20A0A4C8C9060D13247CB8805F86BE56EA067909DD1CE8F5F2F8AB919A58B6DDR0VwNkR4bmhGL21ycjllWFowZXZhcFovL1ZnRWVmM1N3WjlHV3Q0NFFJZ2RldFhl
+        image: /images/Stanford Img.png
       - title: Harvard csx50 Puzzle Winner
         content: I solved all 9/9 problems optimally.
         url: https://cs50.harvard.edu/certificates/33954789-9644-4e2d-a4c9-5b61b9615a93
         image: /images/CS50x Puzzle Day 2025.png
       - title: Facebook Meta Hacker Cup
         content: Solved challenging algorithm problems in a global coding competition.
-        url: https://www.facebook.com/codingcompetitions/hacker-cup/
+        url: https://www.linkedin.com/posts/mr-abdullah-siddique_metahackercup-certificateearned-codingchallenge-activity-7248580428696043520-gKch?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEC21cIB33d4aMsTbBK_dedOWzxH_srbB9g
         image: /images/meta certificate.jpeg
       - title: CALICO Fall '24 – UC Berkeley
         content: Solved 5 out of 8 algorithmic challenges in UC Berkeley's CALICO programming competition.
-        url: https://calico.cs.berkeley.edu/
+        url: https://www.linkedin.com/posts/mr-abdullah-siddique_ucabrberkeley-calicocompetition-certificate-activity-7269380385308897281-JhRl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEC21cIB33d4aMsTbBK_dedOWzxH_srbB9g
         image: /images/calico.png
       - title: "🏆 Next² Edge Runners Winner"
         content: "Developed Compass AI, an AI-powered career navigator that won this Intel & Software AG sponsored hackathon."
         url: "https://lablab.ai/event/next2-edge-runners/compass-ai/compass-ai"
         image: /images/lablab.png
-      - title: Stanford Code in Place 2025
-        content: Served as a Section Leader, mentoring students worldwide in Python programming through Stanford's CS106A curriculum.
-        url: "https://www.linkedin.com/posts/mr-abdullah-siddique_codeinplace-stanforduniversity-sectionleader2025-activity-7316726984791810048-_y9b/"
-        image: /images/stanford.png
+      
 
 
 
