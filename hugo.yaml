@@ -362,17 +362,17 @@ params:
       - title: Echo AI – Voice Companion
         content: Developed a voice-enabled assistant that answers queries, sets reminders, and interacts conversationally using AI-powered speech-to-text and LLM integration.
         url: https://lablab.ai/event/edge-runners-3-point-2/echoai/echo-ai
-        image: /images/echoai.png
+        image: /images/echo-ai.png
         featured:
           name: Live Demo
-          link: https://echoaichatbot.streamlit.app/
+          link: https://echo-ai-chatbot-seven.vercel.app/
         badges:
           - "Python"
           - "LangChain"
           - "Speech Recognition"
         links:
           - icon: fab fa-github
-            url: https://github.com/ahadarshad2001/EchoAi
+            url: https://github.com/abdullah90907/EchoAi-Chatbot
 
 
   #Contact
