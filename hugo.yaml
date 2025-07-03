@@ -431,3 +431,9 @@ params:
     articleList: "Jan 2, 2006"
     articleRecent: "Jan 2, 2006"
 
+  # Chatbot Configuration
+  chatbot:
+    enable: true
+    title: "Abdullah's AI Assistant"
+    subtitle: "Ask me about Abdullah's work & experience"
+

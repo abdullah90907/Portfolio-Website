@@ -39,6 +39,9 @@
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
         }
+        
+        // Emit theme change event for chatbot
+        document.dispatchEvent(new CustomEvent('themeChanged'));
     })
 
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -51,6 +54,11 @@
 
 {{ if not (.Site.Params.navbar.disableSearch | default false) }}
     <script src="{{ .Site.Params.staticPath }}/js/search.js"></script>
+{{ end }}
+
+<!-- Chatbot Integration -->
+{{ if (.Site.Params.chatbot.enable | default true) }}
+<script src="{{ .Site.Params.staticPath }}/js/chatbot.js"></script>
 {{ end }}
 
 
