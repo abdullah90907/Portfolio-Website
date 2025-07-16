@@ -319,6 +319,10 @@ params:
         content: "Developed Compass AI, an AI-powered career navigator that won this Intel & Software AG sponsored hackathon."
         url: "https://lablab.ai/event/next2-edge-runners/compass-ai/compass-ai"
         image: /images/lablab.png
+      - title: "Nasa Space Apps Challenge 2024"
+        content: "Built a website to share NASA project details for educational purposes as part of the NASA Space Apps Challenge 2024."
+        url: "https://www.linkedin.com/feed/update/urn:li:activity:7248764725482672129/"
+        image: /images/Nasa Space Challenge.jpeg
       
 
 
